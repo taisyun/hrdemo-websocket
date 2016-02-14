@@ -1,4 +1,4 @@
-import makeStore from './server/store'
+import configureStore from './server/store'
 import startServer from './server/server'
 import path from 'path'
 import express from 'express'
@@ -10,8 +10,6 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import config from '../webpack.config.js'
 import morgan from 'morgan'
 
-export const store = makeStore()
-
 
 const isDeveloping = process.env.NODE_ENV !== 'production'
 const port = isDeveloping ? 3000 : process.env.PORT
@@ -19,6 +17,8 @@ const host = process.env.HOSTNAME ?  process.env.HOSTNAME : '0.0.0.0'
 const app = express()
 const httpServer = http.Server(app)
 const proxy = httpProxy.createProxyServer({});
+
+export const store = configureStore()
 
 startServer(store,httpServer)
 

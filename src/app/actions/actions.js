@@ -6,6 +6,7 @@ export const INVALIDATE_CONTENTS = 'INVALIDATE_CONTENTS'
 export const ROW_EDITED = 'ROW_EDITED'
 export const SAVING_JOBS = 'SAVING_JOBS'
 export const SAVED_JOBS = 'SAVED_JOBS'
+export const SET_STATE = 'SET_STATE'
 
 export function invalidateContents() {
   return {
@@ -47,6 +48,14 @@ export function savedJobs() {
     type: SAVED_JOBS
   }
 }
+
+export function setState(state) {
+  return {
+    type: SET_STATE,
+    state
+  }
+}
+
 
 function fetchJobs() {
   return dispatch => {

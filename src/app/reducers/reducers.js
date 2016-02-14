@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import {
   INVALIDATE_CONTENTS,
   REQUEST_JOBS, RECEIVE_JOBS, ROW_EDITED,
-  SAVING_JOBS, SAVED_JOBS
+  SAVING_JOBS, SAVED_JOBS, SET_STATE
 } from '../actions/actions'
 
 function jobList(state = {
@@ -51,6 +51,8 @@ function jobList(state = {
         isFetching: false,
         didInvalidate: false
       })
+    case SET_STATE:
+      return action.state.jobList
     default:
       return state
   }

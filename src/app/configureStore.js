@@ -4,11 +4,21 @@ import createLogger from 'redux-logger'
 import rootReducer from './reducers/reducers'
 import { persistState } from 'redux-devtools'
 import DevTools from './containers/DevTools'
+import remoteActionMiddleware from './remote_action_middleware'
+import io from 'socket.io-client'
+import { setState } from './actions/actions'
+
+
+const socket = io(`${location.protocol}//${location.hostname}:${location.port}/joblist`)
+
+
+const loggerMiddleware = createLogger()
 
 const enhancer = compose(
   // Middleware you want to use in development:
   applyMiddleware(
-    thunkMiddleware //,
+    thunkMiddleware,
+    remoteActionMiddleware(socket) //,
 //    loggerMiddleware
   ),
   // Required! Enable Redux DevTools with the monitors you chose
@@ -24,7 +34,6 @@ function getDebugSessionKey() {
   return (matches && matches.length > 0)? matches[1] : null;
 };
 
-const loggerMiddleware = createLogger()
 
 export default function configureStore(initialState) {
   // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.
@@ -37,6 +46,10 @@ export default function configureStore(initialState) {
       store.replaceReducer(require('./reducers/reducers')/*.default if you use Babel 6+ */)
     );
   }
+
+  socket.on('state', state => {
+    store.dispatch(setState(state))
+  })
 
   return store;
 }

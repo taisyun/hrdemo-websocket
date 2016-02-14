@@ -85,7 +85,8 @@ AsyncApp.propTypes = {
 }
 
 function mapStateToProps(state) {
-  const copied = state.jobList.items.map( o => Object.assign({}, o) )
+  const items = ((state || {}).jobList || {}).items || []
+  const copied = items.map( o => Object.assign({}, o) )
   const props = Object.assign( {}, {
     isFetching: true,
     items: []

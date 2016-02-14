@@ -34,9 +34,21 @@ function todos(state = [], action) {
   }
 }
 
+function jobList(state = {
+  isFetching: false,
+  didInvalidate: true,
+  items: []
+}, action) {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
+
 const todoApp = combineReducers({
   visibilityFilter,
-  todos
+  todos,
+  jobList
 })
 
 export default todoApp

@@ -3,7 +3,7 @@ import Server from 'socket.io'
 export default function startServer(store,httpServer) {
   const io = new Server(httpServer)
 
-  const items = io.of('/todolist')
+  const items = io.of('/joblist')
   // Emit 'state' to socket.io when Store changes
   store.subscribe(
     () => items.emit('state', store.getState())
