@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import createNodeLogger from 'redux-node-logger'
-import todoApp from './reducer'
+import rootReducer from './reducer'
 import initialData from './data.json'
 
 
@@ -13,7 +13,7 @@ export default function configureStore(initialState) {
   })
   const loggerMiddleware = createNodeLogger()
   const enhancer = applyMiddleware(loggerMiddleware)
-  const store = createStore(todoApp, state, enhancer)
+  const store = createStore(rootReducer, state, enhancer)
 
   return store
 }

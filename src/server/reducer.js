@@ -1,38 +1,5 @@
 import { combineReducers } from 'redux'
-import { ADD_TODO, COMPLETE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from '../redux/actions'
-const { SHOW_ALL } = VisibilityFilters
-
-function visibilityFilter(state = SHOW_ALL, action) {
-  switch (action.type) {
-  case SET_VISIBILITY_FILTER:
-    return action.filter
-  default:
-    return state
-  }
-}
-
-function todos(state = [], action) {
-  switch (action.type) {
-  case ADD_TODO:
-    return [
-      ...state,
-      {
-        text: action.text,
-        completed: false
-      }
-    ]
-  case COMPLETE_TODO:
-    return [
-      ...state.slice(0, action.index),
-      Object.assign({}, state[action.index], {
-        completed: true
-      }),
-      ...state.slice(action.index + 1)
-    ]
-  default:
-    return state
-  }
-}
+import { SET_STATE } from '../redux/actions'
 
 function jobList(state = {
   isFetching: false,
@@ -45,10 +12,8 @@ function jobList(state = {
   }
 }
 
-const todoApp = combineReducers({
-  visibilityFilter,
-  todos,
+const rootReducer = combineReducers({
   jobList
 })
 
-export default todoApp
+export default rootReducer
