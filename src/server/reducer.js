@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   INIT_DATA,
+  RESET_EDITED,
   ROW_EDITED,
   SET_STATE
 } from '../redux/actions'
@@ -13,6 +14,13 @@ function jobList(state = {
   switch (action.type) {
     case INIT_DATA:
       return action.state.jobList
+    case RESET_EDITED:
+      return Object.assign({}, {
+        isFetching: false,
+        didInvalidate: false,
+        items: state.items,
+        lastEdited: {}
+      })
     case ROW_EDITED:
       const newItems = state.items.map( (element) => {
         if (element.jobId === action.row.jobId) {
@@ -22,7 +30,7 @@ function jobList(state = {
         }
       })
 
-      return Object.assign({}, state, {
+      return Object.assign({}, state.jobList, {
         isFetching: false,
         didInvalidate: false,
         items: newItems,

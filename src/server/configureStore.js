@@ -8,8 +8,8 @@ export default function configureStore(initialState) {
 
   const loggerMiddleware = createNodeLogger()
   const enhancer = applyMiddleware(
-    thunkMiddleware //,
-//    loggerMiddleware
+    thunkMiddleware
+   ,loggerMiddleware
   )
   const store = createStore(rootReducer, initialState, enhancer)
 

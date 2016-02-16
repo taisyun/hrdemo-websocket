@@ -2,12 +2,19 @@ import initialData from './data.json'
 
 export const INIT_DATA = 'INIT_DATA'
 
+export const RESET_EDITED = 'RESET_EDITED'
 export const ROW_EDITED = 'ROW_EDITED'
 
 export const SET_STATE = 'SET_STATE'
 
 export function initData(state) {
   return { type: INIT_DATA, state }
+}
+
+export function resetEdited() {
+  return {
+    type: RESET_EDITED
+  }
 }
 
 export function rowEdited(row, columnName) {

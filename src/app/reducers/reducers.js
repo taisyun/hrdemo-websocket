@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux'
 import {
-  INVALIDATE_CONTENTS,
-  REQUEST_JOBS, RECEIVE_JOBS, ROW_EDITED,
-  SAVING_JOBS, SAVED_JOBS, SET_STATE
+  SET_STATE
 } from '../actions/actions'
 
 function jobList(state = {

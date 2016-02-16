@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { connect } from 'react-redux';
-import { rowEdited } from '../actions/actions'
+import { resetEdited, rowEdited } from '../actions/actions'
 
 class JobList extends Component {
 
@@ -34,13 +34,14 @@ class JobList extends Component {
 
 
     const { dispatch } = this.props
+    dispatch(resetEdited());
     dispatch(rowEdited(row, cellName));
   };
 
   dataClassName(fieldValue,data,r,i) {
     if(this.lastEditedRow !== -1 && this.lastEditedCol !== -1) {
       if(this.lastEditedRow === r && this.lastEditedCol === i) {
-        return "blinking";
+        return "blinking " + Math.random();
       }
     }
     return "";
