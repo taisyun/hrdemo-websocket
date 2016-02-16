@@ -1,4 +1,4 @@
-import configureStore from './server/store'
+import configureStore from './server/configureStore'
 import startServer from './server/server'
 import path from 'path'
 import express from 'express'
