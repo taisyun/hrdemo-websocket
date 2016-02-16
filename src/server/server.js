@@ -1,7 +1,10 @@
 import Server from 'socket.io'
+import { loadInitData } from '../redux/actions'
 
 export default function startServer(store,httpServer) {
   const io = new Server(httpServer)
+
+  store.dispatch.bind(store)(loadInitData())
 
   const items = io.of('/joblist')
   // Emit 'state' to socket.io when Store changes

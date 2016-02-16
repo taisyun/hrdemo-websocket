@@ -6,27 +6,10 @@ import JobList from '../components/JobList'
 class AsyncApp extends Component {
   constructor(props) {
     super(props)
-    this.handleLoadDataClick = this.handleLoadDataClick.bind(this)
-    this.handleSaveDataClick = this.handleSaveDataClick.bind(this)
   }
 
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch(fetchJobsIfNeeded())
-  }
-
-
-  handleLoadDataClick(e) {
-    e.preventDefault()
-
-    const { dispatch } = this.props
-    dispatch(invalidateContents())
-    dispatch(fetchJobsIfNeeded())
-  }
-
-  handleSaveDataClick() {
-    const { dispatch } = this.props
-    dispatch(saveJobs())
   }
 
   render() {
@@ -40,21 +23,6 @@ class AsyncApp extends Component {
               Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
               {' '}
             </span>
-          }
-          {!isFetching &&
-            <span>
-              <button type="button" id="loadData" className="btn btn-success"
-                 onClick={this.handleLoadDataClick}>
-                Load Data
-              </button>
-              <span> </span>
-            </span>
-          }
-          {!isFetching &&
-            <button type="button" id="saveData" className="btn btn-success"
-               onClick={this.handleSaveDataClick}>
-              Save Data
-            </button>
           }
         </p>
         {isFetching && items.length === 0 &&

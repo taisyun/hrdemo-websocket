@@ -11,46 +11,6 @@ function jobList(state = {
   items: []
 }, action) {
   switch (action.type) {
-    case INVALIDATE_CONTENTS:
-      return Object.assign({}, state, {
-        didInvalidate: true
-      })
-    case REQUEST_JOBS:
-    case SAVING_JOBS:
-      return Object.assign({}, state, {
-        isFetching: true,
-        didInvalidate: false
-      })
-    case ROW_EDITED:
-      const newItems = state.items.map( (element) => {
-        if (element.jobId === action.row.jobId) {
-          return action.row
-        } else {
-          return element
-        }
-      })
-
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        items: newItems,
-        lastEdited: {
-          rowId: action.row.jobId,
-          columnName: action.columnName
-        }
-      })
-    case RECEIVE_JOBS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        items: action.items,
-        lastUpdated: action.receivedAt
-      })
-    case SAVED_JOBS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false
-      })
     case SET_STATE:
       return action.state.jobList
     default:

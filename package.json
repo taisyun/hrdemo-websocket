@@ -40,6 +40,7 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^1.6.2",
     "jsdom": "^7.2.2",
+    "json-loader": "^0.5.4",
     "mocha": "^2.4.5",
     "morgan": "^1.6.1",
     "postcss": "^5.0.10",
