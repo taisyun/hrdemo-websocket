@@ -76,8 +76,6 @@
     "redux-node-logger": "0.0.3",
     "redux-thunk": "^1.0.3",
     "socket.io": "^1.4.5",
-    "socket.io-client": "^1.4.5",
-    "todomvc-app-css": "^2.0.3",
-    "todomvc-common": "^1.0.2"
+    "socket.io-client": "^1.4.5"
   }
 }
