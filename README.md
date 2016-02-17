@@ -3,6 +3,7 @@
  
 ## Commands
   - `npm start` runs the development server with [hot-loading](https://github.com/gaearon/react-hot-loader).
+  - `npm run debug` runs the development server with [hot-loading](https://github.com/gaearon/react-hot-loader) and node-inspector
   - `npm test` runs both server side and client side tests
   - `npm run lint` runs eslint on files
   - `npm run build` builds code for production
