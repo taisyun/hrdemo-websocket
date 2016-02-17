@@ -1,7 +1,11 @@
 import Server from 'socket.io'
+import configureStore from './configureStore'
 import { loadInitData } from '../redux/actions'
 
-export default function startServer(store,httpServer) {
+export default function startServer(httpServer) {
+
+  const store = configureStore()
+
   const io = new Server(httpServer)
 
   store.dispatch.bind(store)(loadInitData())

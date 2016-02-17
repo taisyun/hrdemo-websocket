@@ -1,4 +1,3 @@
-import configureStore from './server/configureStore'
 import startServer from './server/server'
 import path from 'path'
 import express from 'express'
@@ -16,9 +15,7 @@ const host = process.env.HOSTNAME ?  process.env.HOSTNAME : '0.0.0.0'
 const app = express()
 const httpServer = http.Server(app)
 
-export const store = configureStore()
-
-startServer(store,httpServer)
+startServer(httpServer)
 
 app.use(morgan('combined'))
 
