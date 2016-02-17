@@ -8,17 +8,32 @@ export const ROW_EDITED = 'ROW_EDITED'
 export const SET_STATE = 'SET_STATE'
 
 export function initData(state) {
-  return { type: INIT_DATA, state }
+  return {
+    meta: {
+      sendToServer: false,
+      sendToClient: false
+    },
+    type: INIT_DATA,
+    state
+  }
 }
 
 export function resetEdited() {
   return {
+    meta: {
+      sendToServer: false,
+      sendToClient: false
+    },
     type: RESET_EDITED
   }
 }
 
 export function rowEdited(row, columnName) {
   return {
+    meta: {
+      sendToServer: true,
+      sendToClient: false
+    },
     type: ROW_EDITED,
     row: row,
     columnName: columnName
@@ -27,6 +42,10 @@ export function rowEdited(row, columnName) {
 
 export function setState(state) {
   return {
+    meta: {
+      sendToServer: false,
+      sendToClient: false
+    },
     type: SET_STATE,
     state
   }
