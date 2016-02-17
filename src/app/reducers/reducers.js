@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   SET_STATE
-} from '../actions/actions'
+} from '../../redux/actions'
 
 function jobList(state = {
   isFetching: false,

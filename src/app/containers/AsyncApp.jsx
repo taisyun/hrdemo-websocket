@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchJobsIfNeeded, invalidateContents, saveJobs } from '../actions/actions'
 import JobList from '../components/JobList'
 
 class AsyncApp extends Component {

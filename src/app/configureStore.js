@@ -6,7 +6,7 @@ import { persistState } from 'redux-devtools'
 import DevTools from './containers/DevTools'
 import remoteActionMiddleware from './remote_action_middleware'
 import io from 'socket.io-client'
-import { setState } from './actions/actions'
+import { setState } from '../redux/actions'
 
 
 const socket = io(`${location.protocol}//${location.hostname}:${location.port}/joblist`)

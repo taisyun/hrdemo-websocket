@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { connect } from 'react-redux';
-import { resetEdited, rowEdited } from '../actions/actions'
+import { resetEdited, rowEdited } from '../../redux/actions'
 
 class JobList extends Component {
 

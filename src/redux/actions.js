@@ -26,7 +26,10 @@ export function rowEdited(row, columnName) {
 }
 
 export function setState(state) {
-  return { type: SET_STATE, state }
+  return {
+    type: SET_STATE,
+    state
+  }
 }
 
 export function loadInitData() {
