@@ -4,7 +4,6 @@ import path from 'path'
 import express from 'express'
 import webpack from 'webpack'
 import http from 'http'
-import httpProxy from 'http-proxy'
 import webpackMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import config from '../webpack.config.js'
@@ -16,7 +15,6 @@ const port = isDeveloping ? 3000 : process.env.PORT
 const host = process.env.HOSTNAME ?  process.env.HOSTNAME : '0.0.0.0'
 const app = express()
 const httpServer = http.Server(app)
-const proxy = httpProxy.createProxyServer({});
 
 export const store = configureStore()
 
@@ -46,17 +44,6 @@ if (isDeveloping) {
 
   app.use(webpackHotMiddleware(compiler))
 }
-
-var hrdemo = express.Router();
-
-hrdemo.get('*', function (req, res) {
-  proxy.web(req, res, {
-    target: 'http://localhost:8091/hrdemo',
-    secure: false
-  });
-});
-
-app.use('/hrdemo', hrdemo);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'))
