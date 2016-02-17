@@ -34,7 +34,6 @@ class JobList extends Component {
 
 
     const { dispatch } = this.props
-    dispatch(resetEdited());
     dispatch(rowEdited(row, cellName));
   };
 

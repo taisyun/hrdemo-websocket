@@ -6,7 +6,7 @@ import { persistState } from 'redux-devtools'
 import DevTools from './containers/DevTools'
 import remoteActionMiddleware from './remote_action_middleware'
 import io from 'socket.io-client'
-import { setState } from '../redux/actions'
+import { resetEdited, setState } from '../redux/actions'
 
 
 const socket = io(`${location.protocol}//${location.hostname}:${location.port}/joblist`)
@@ -48,6 +48,7 @@ export default function configureStore(initialState) {
   }
 
   socket.on('state', state => {
+    store.dispatch(resetEdited());
     store.dispatch(setState(state))
   })
 
